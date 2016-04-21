@@ -78,26 +78,30 @@ class Mailer extends BaseMailer
             $client = new PostmarkClient($this->token, $this->timeOut);
             $templateId = $message->getTemplateId();
             if ($templateId === null) {
-                $sendResult = $client->sendEmail($message->getFrom(), $message->getTo(),
+                $sendResult = $client->sendEmail(
+                    $message->getFrom(),
+                    Message::stringifyEmails($message->getTo()),
                     $message->getSubject(),
                     $message->getHtmlBody(), $message->getTextBody(),
                     $message->getTag(),
                     $message->getTrackOpens(),
                     $message->getReplyTo(),
-                    $message->getCc(),
-                    $message->getBcc(),
+                    Message::stringifyEmails($message->getCc()),
+                    Message::stringifyEmails($message->getBcc()),
                     $message->getHeaders(),
                     $message->getAttachments()
                 );
             } else {
-                $sendResult = $client->sendEmailWithTemplate($message->getFrom(), $message->getTo(),
+                $sendResult = $client->sendEmailWithTemplate(
+                    $message->getFrom(),
+                    Message::stringifyEmails($message->getTo()),
                     $message->getTemplateId(), $message->getTemplateModel(),
                     $message->getInlineCss(),
                     $message->getTag(),
                     $message->getTrackOpens(),
                     $message->getReplyTo(),
-                    $message->getCc(),
-                    $message->getBcc(),
+                    Message::stringifyEmails($message->getCc()),
+                    Message::stringifyEmails($message->getBcc()),
                     $message->getHeaders(),
                     $message->getAttachments()
                 );
