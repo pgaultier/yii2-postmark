@@ -126,15 +126,16 @@ class MessageTest extends TestCase
         $this->assertEquals('Test User <test@email.com>', $message->getFrom());
 
         $message->setTo('test@email.com');
-        $this->assertEquals('test@email.com', $message->getTo());
+        $this->assertTrue(is_array($message->getTo()));
+        $this->assertEquals('test@email.com', Message::stringifyEmails($message->getTo()));
         $message->setTo(['test@email.com']);
-        $this->assertEquals('test@email.com', $message->getTo());
+        $this->assertEquals('test@email.com', Message::stringifyEmails($message->getTo()));
         $message->setTo(['test@email.com' => 'Test User']);
-        $this->assertEquals('Test User <test@email.com>', $message->getTo());
+        $this->assertEquals('Test User <test@email.com>', Message::stringifyEmails($message->getTo()));
         $message->setTo(['test@email.com' => 'Test, User']);
-        $this->assertEquals('"Test, User" <test@email.com>', $message->getTo());
+        $this->assertEquals('"Test, User" <test@email.com>', Message::stringifyEmails($message->getTo()));
         $message->setTo(['test@email.com' => 'Test User', 'test2@email.com']);
-        $this->assertEquals('Test User <test@email.com>, test2@email.com', $message->getTo());
+        $this->assertEquals('Test User <test@email.com>, test2@email.com', Message::stringifyEmails($message->getTo()));
 
         $message->setReplyTo('test@email.com');
         $this->assertEquals('test@email.com', $message->getReplyTo());
@@ -148,26 +149,28 @@ class MessageTest extends TestCase
         $this->assertEquals('Test User <test@email.com>, test2@email.com', $message->getReplyTo());
 
         $message->setCc('test@email.com');
-        $this->assertEquals('test@email.com', $message->getCc());
+        $this->assertTrue(is_array($message->getCc()));
+        $this->assertEquals('test@email.com', Message::stringifyEmails($message->getCc()));
         $message->setCc(['test@email.com']);
-        $this->assertEquals('test@email.com', $message->getCc());
+        $this->assertEquals('test@email.com', Message::stringifyEmails($message->getCc()));
         $message->setCc(['test@email.com' => 'Test User']);
-        $this->assertEquals('Test User <test@email.com>', $message->getCc());
+        $this->assertEquals('Test User <test@email.com>', Message::stringifyEmails($message->getCc()));
         $message->setCc(['test@email.com' => 'Test, User']);
-        $this->assertEquals('"Test, User" <test@email.com>', $message->getCc());
+        $this->assertEquals('"Test, User" <test@email.com>', Message::stringifyEmails($message->getCc()));
         $message->setCc(['test@email.com' => 'Test User', 'test2@email.com']);
-        $this->assertEquals('Test User <test@email.com>, test2@email.com', $message->getCc());
+        $this->assertEquals('Test User <test@email.com>, test2@email.com', Message::stringifyEmails($message->getCc()));
 
         $message->setBcc('test@email.com');
-        $this->assertEquals('test@email.com', $message->getBcc());
+        $this->assertTrue(is_array($message->getBcc()));
+        $this->assertEquals('test@email.com', Message::stringifyEmails($message->getBcc()));
         $message->setBcc(['test@email.com']);
-        $this->assertEquals('test@email.com', $message->getBcc());
+        $this->assertEquals('test@email.com', Message::stringifyEmails($message->getBcc()));
         $message->setBcc(['test@email.com' => 'Test User']);
-        $this->assertEquals('Test User <test@email.com>', $message->getBcc());
+        $this->assertEquals('Test User <test@email.com>', Message::stringifyEmails($message->getBcc()));
         $message->setBcc(['test@email.com' => 'Test, User']);
-        $this->assertEquals('"Test, User" <test@email.com>', $message->getBcc());
+        $this->assertEquals('"Test, User" <test@email.com>', Message::stringifyEmails($message->getBcc()));
         $message->setBcc(['test@email.com' => 'Test User', 'test2@email.com']);
-        $this->assertEquals('Test User <test@email.com>, test2@email.com', $message->getBcc());
+        $this->assertEquals('Test User <test@email.com>, test2@email.com', Message::stringifyEmails($message->getBcc()));
 
         $message->setSubject('Subject');
         $this->assertEquals('Subject', $message->getSubject());

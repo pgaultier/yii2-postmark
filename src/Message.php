@@ -37,7 +37,7 @@ use yii\mail\MailerInterface;
 class Message extends BaseMessage
 {
     /**
-     * @var string from
+     * @var string|array from
      */
     protected $from;
 
@@ -47,7 +47,7 @@ class Message extends BaseMessage
     protected $to = [];
 
     /**
-     * @var string reply to
+     * @var string|array reply to
      */
     protected $replyTo;
 
@@ -97,7 +97,7 @@ class Message extends BaseMessage
     protected $headers = [];
 
     /**
-     * @var string
+     * @var integer
      */
     protected $templateId;
 
@@ -132,7 +132,7 @@ class Message extends BaseMessage
      */
     public function getFrom()
     {
-        return $this->extractEmails($this->from);
+        return self::stringifyEmails($this->from);
     }
 
     /**
@@ -149,7 +149,7 @@ class Message extends BaseMessage
      */
     public function getTo()
     {
-        return $this->extractEmails($this->to);
+        return $this->to;
     }
 
     /**
@@ -157,6 +157,9 @@ class Message extends BaseMessage
      */
     public function setTo($to)
     {
+        if (is_string($to) === true) {
+            $to = [$to];
+        }
         $this->to = $to;
         return $this;
     }
@@ -166,7 +169,7 @@ class Message extends BaseMessage
      */
     public function getReplyTo()
     {
-        return $this->extractEmails($this->replyTo);
+        return self::stringifyEmails($this->replyTo);
     }
 
     /**
@@ -183,7 +186,7 @@ class Message extends BaseMessage
      */
     public function getCc()
     {
-        return $this->extractEmails($this->cc);
+        return $this->cc;
     }
 
     /**
@@ -191,6 +194,9 @@ class Message extends BaseMessage
      */
     public function setCc($cc)
     {
+        if (is_string($cc) === true) {
+            $cc = [$cc];
+        }
         $this->cc = $cc;
         return $this;
     }
@@ -200,7 +206,7 @@ class Message extends BaseMessage
      */
     public function getBcc()
     {
-        return $this->extractEmails($this->bcc);
+        return $this->bcc;
     }
 
     /**
@@ -208,6 +214,9 @@ class Message extends BaseMessage
      */
     public function setBcc($bcc)
     {
+        if (is_string($bcc) === true) {
+            $bcc = [$bcc];
+        }
         $this->bcc = $bcc;
         return $this;
     }
@@ -397,7 +406,9 @@ class Message extends BaseMessage
      */
     public function attach($fileName, array $options = [])
     {
-        $attachment['Content'] = base64_encode(file_get_contents($fileName));
+        $attachment = [
+            'Content' => base64_encode(file_get_contents($fileName))
+        ];
         if (!empty($options['fileName'])) {
             $attachment['Name'] = $options['fileName'];
         } else {
@@ -417,7 +428,9 @@ class Message extends BaseMessage
      */
     public function attachContent($content, array $options = [])
     {
-        $attachment['Content'] = base64_encode($content);
+        $attachment = [
+            'Content' => base64_encode($content)
+        ];
         if (!empty($options['fileName'])) {
             $attachment['Name'] = $options['fileName'];
         } else {
@@ -437,7 +450,9 @@ class Message extends BaseMessage
      */
     public function embed($fileName, array $options = [])
     {
-        $embed['Content'] = base64_encode(file_get_contents($fileName));
+        $embed = [
+            'Content' => base64_encode(file_get_contents($fileName))
+        ];
         if (!empty($options['fileName'])) {
             $embed['Name'] = $options['fileName'];
         } else {
@@ -458,7 +473,9 @@ class Message extends BaseMessage
      */
     public function embedContent($content, array $options = [])
     {
-        $embed['Content'] = base64_encode($content);
+        $embed = [
+            'Content' => base64_encode($content)
+        ];
         if (!empty($options['fileName'])) {
             $embed['Name'] = $options['fileName'];
         } else {
@@ -490,7 +507,7 @@ class Message extends BaseMessage
      * @return string|null
      * @since XXX
      */
-    private function extractEmails($emailsData)
+    public static function stringifyEmails($emailsData)
     {
         $emails = null;
         if (empty($emailsData) === false) {
