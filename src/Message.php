@@ -397,7 +397,9 @@ class Message extends BaseMessage
      */
     public function attach($fileName, array $options = [])
     {
-        $attachment['Content'] = base64_encode(file_get_contents($fileName));
+        $attachment = [
+            'Content' => base64_encode(file_get_contents($fileName))
+        ];
         if (!empty($options['fileName'])) {
             $attachment['Name'] = $options['fileName'];
         } else {
@@ -417,7 +419,9 @@ class Message extends BaseMessage
      */
     public function attachContent($content, array $options = [])
     {
-        $attachment['Content'] = base64_encode($content);
+        $attachment = [
+            'Content' => base64_encode($content)
+        ];
         if (!empty($options['fileName'])) {
             $attachment['Name'] = $options['fileName'];
         } else {
