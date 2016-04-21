@@ -19,7 +19,6 @@ use Postmark\Models\PostmarkException;
 use Postmark\PostmarkClient;
 use yii\base\InvalidConfigException;
 use yii\mail\BaseMailer;
-use Yii;
 
 /**
  * This component allow user to send an email
