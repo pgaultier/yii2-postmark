@@ -51,6 +51,25 @@ Yii::$app->mailer->compose('contact/html')
 For further instructions refer to the [related section in the Yii Definitive Guide](http://www.yiiframework.com/doc-2.0/guide-tutorial-mailing.html)
 
 
+Running the tests
+-----------------
+
+Before running the tests, you should edit the file tests/_bootstrap.php and change the defines :
+
+``` php
+// ...
+define('POSTMARK_FROM', '<sender>');
+define('POSTMARK_TOKEN', '<token>');
+define('POSTMARK_TO', '<target>');
+define('POSTMARK_TEMPLATE', 575741);
+
+define('POSTMARK_TEST_SEND', false);
+// ...
+
+```
+
+to match your [PostmarkApp](https://postmarkapp.com) configuration.
+
 Contributing
 ------------
 
