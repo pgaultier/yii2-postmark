@@ -37,7 +37,7 @@ use yii\mail\MailerInterface;
 class Message extends BaseMessage
 {
     /**
-     * @var string from
+     * @var string|array from
      */
     protected $from;
 
@@ -437,7 +437,9 @@ class Message extends BaseMessage
      */
     public function embed($fileName, array $options = [])
     {
-        $embed['Content'] = base64_encode(file_get_contents($fileName));
+        $embed = [
+            'Content' => base64_encode(file_get_contents($fileName))
+        ];
         if (!empty($options['fileName'])) {
             $embed['Name'] = $options['fileName'];
         } else {
@@ -458,7 +460,9 @@ class Message extends BaseMessage
      */
     public function embedContent($content, array $options = [])
     {
-        $embed['Content'] = base64_encode($content);
+        $embed = [
+            'Content' => base64_encode($content)
+        ];
         if (!empty($options['fileName'])) {
             $embed['Name'] = $options['fileName'];
         } else {
