@@ -1,4 +1,4 @@
-Sweelix tree is free software. It is released under the terms of the following BSD License.
+Sweelix Postmark is free software. It is released under the terms of the following BSD License.
 
 Copyright 2010-2016 by Sweelix SAS
 All rights reserved.
