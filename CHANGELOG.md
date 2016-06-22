@@ -1,6 +1,7 @@
 Postmark Yii2 Change Log
 ========================
 
+ - Chg: Update dependencies
 
 1.0.1 April 21, 2016
 --------------------
