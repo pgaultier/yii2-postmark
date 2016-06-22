@@ -7,13 +7,13 @@ This extension allow the developper to use [PostmarkApp](https://postmarkapp.com
 [![Latest Stable Version](https://poser.pugx.org/sweelix/yii2-postmark/v/stable)](https://packagist.org/packages/sweelix/yii2-postmark)
 [![Build Status](https://api.travis-ci.org/pgaultier/yii2-postmark.svg?branch=master)](https://travis-ci.org/pgaultier/yii2-postmark)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/pgaultier/yii2-postmark/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/pgaultier/yii2-postmark/?branch=master)
-[![Code Coverage](https://scrutinizer-ci.com/g/pgaultier/yii2-postmark/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/pgaultier/tree/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/pgaultier/yii2-postmark/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/pgaultier/yii2-postmark/?branch=master)
 [![License](https://poser.pugx.org/sweelix/yii2-postmark/license)](https://packagist.org/packages/sweelix/yii2-postmark)
 
 [![Latest Development Version](https://img.shields.io/badge/unstable-devel-yellowgreen.svg)](https://packagist.org/packages/sweelix/yii2-postmark)
 [![Build Status](https://travis-ci.org/pgaultier/yii2-postmark.svg?branch=devel)](https://travis-ci.org/pgaultier/yii2-postmark)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/pgaultier/yii2-postmark/badges/quality-score.png?b=devel)](https://scrutinizer-ci.com/g/pgaultier/yii2-postmark/?branch=devel)
-[![Code Coverage](https://scrutinizer-ci.com/g/pgaultier/yii2-postmark/badges/coverage.png?b=devel)](https://scrutinizer-ci.com/g/pgaultier/tree/?branch=devel)
+[![Code Coverage](https://scrutinizer-ci.com/g/pgaultier/yii2-postmark/badges/coverage.png?b=devel)](https://scrutinizer-ci.com/g/pgaultier/yii2-postmark/?branch=devel)
 
 Installation
 ------------
