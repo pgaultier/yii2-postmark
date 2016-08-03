@@ -1,6 +1,9 @@
 Postmark Yii2 Change Log
 ========================
 
+ - Chg: Update dependencies
+ - Chg: Add getCharset even if not supported by the API 
+
 1.0.2 June 22, 2016
 -------------------
 
