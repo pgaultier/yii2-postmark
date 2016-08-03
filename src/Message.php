@@ -111,12 +111,14 @@ class Message extends BaseMessage
      */
     protected $inlineCss = true;
 
+    protected $charset = 'utf-8';
+
     /**
      * @inheritdoc
      */
     public function getCharset()
     {
-        throw new NotSupportedException();
+        return $this->charset;
     }
 
     /**

@@ -110,9 +110,8 @@ class MessageTest extends TestCase
     public function testGetCharsetException()
     {
         $message = new Message();
-        $this->expectException(NotSupportedException::class);
         $charset = $message->getCharset();
-
+        $this->assertEquals('utf-8', $charset);
     }
 
     public function testGettersSetters()
